@@ -15,6 +15,7 @@ Made using Android Studio, Firebase, Google Maps API, PayPal API
 
 APK can be found under: android/app/build/outputs/apk/debug
 Feel free to clone, improve and open issues on :octocat: GitHub if you find any bugs other than the ones mentioned above.
+
 I'll maintain this app if demand increases.
 
 
