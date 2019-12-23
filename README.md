@@ -1,7 +1,7 @@
 # TravelApp
 :taxi: :bus: :minibus:
 
-A Proof-of-concept "Uber-like" app with live location updates.
+A Proof-of-concept "Uber-like" android app with live location updates.
 # :beetle: Bugs List:
 * Authentication works both ways and is not validated i.e. A Drivers email & password will also work for Customer.
 * Driver & Customer Login Screens:  App Crashes if no email and password are filled in and the user just clicks on "REGISTRATION".
