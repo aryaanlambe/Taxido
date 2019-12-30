@@ -8,6 +8,7 @@ A Proof-of-concept "Uber-like" android app with live location updates.
 * If logged in as Customer:  Double tapping "CALL DRIVER" will crash the app.
 * "I'm a Customer" & "I'm a driver" screens: Pressing back on test device closed the entire app instead of returning to previous screen.
 * Paypal Payouts dont work & so have been commented out in code.
+* Customers don't show up on Driver map.
 
 
 Made using Android Studio, Firebase, Google Maps API, PayPal API
