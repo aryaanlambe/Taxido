@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -37,7 +38,8 @@ public class DriverSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField, mCarField;
 
-    private Button mBack, mConfirm;
+    private Button mConfirm;
+    private ImageButton mBack;
 
     private ImageView mProfileImage;
 
@@ -70,7 +72,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-        mBack = (Button) findViewById(R.id.back);
+        mBack = (ImageButton) findViewById(R.id.back);
         mConfirm = (Button) findViewById(R.id.confirm);
 
         mAuth = FirebaseAuth.getInstance();

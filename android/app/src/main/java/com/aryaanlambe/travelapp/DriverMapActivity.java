@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Build;
 import android.os.Looper;
@@ -13,9 +14,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -39,8 +42,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -66,11 +71,14 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private FusedLocationProviderClient mFusedLocationClient;
 
 
-    private Button mLogout, mSettings, mRideStatus, mHistory;
+    private Button   mRideStatus, mHistory;
+    private ImageButton mLogout, mSettings;
 
     private Switch mWorkingSwitch;
 
     private int status = 0;
+    private static final String TAG = "DriverMapActivity";
+
 
     private String customerId = "", destination;
     private LatLng destinationLatLng, pickupLatLng;
@@ -92,13 +100,31 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         setContentView(R.layout.activity_driver_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         polylines = new ArrayList<>();
+        // Remove compass icon from top left, near logout icon, Also NOT WORKING, Try masking it under logout button.
+        //mMap.getUiSettings().setCompassEnabled(false);
+        /*
+        Issue with Map Theming, Hence Commented out, Corresponding json file is in res/raw folder.
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style_json));
+
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Can't find style. Error: ", e);
+        }
+        */
 
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
 
 
         mCustomerInfo = (LinearLayout) findViewById(R.id.customerInfo);
@@ -121,8 +147,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-        mSettings = (Button) findViewById(R.id.settings);
-        mLogout = (Button) findViewById(R.id.logout);
+        mSettings = (ImageButton) findViewById(R.id.settings);
+        mLogout = (ImageButton) findViewById(R.id.logout);
         mRideStatus = (Button) findViewById(R.id.rideStatus);
         mHistory = (Button) findViewById(R.id.history);
         mRideStatus.setOnClickListener(new View.OnClickListener() {
