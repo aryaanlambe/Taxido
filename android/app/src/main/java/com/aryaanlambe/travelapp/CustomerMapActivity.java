@@ -8,12 +8,15 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -63,7 +66,11 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private FusedLocationProviderClient mFusedLocationClient;
 
-    private Button mLogout, mRequest, mSettings, mHistory;
+    private Button  mHistory;
+
+    private FloatingActionButton mRequest;
+
+    private ImageButton mLogout, mSettings;
 
     private LatLng pickupLocation;
 
@@ -113,9 +120,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         mRadioGroup.check(R.id.UberX);
 
-        mLogout = (Button) findViewById(R.id.logout);
-        mRequest = (Button) findViewById(R.id.request);
-        mSettings = (Button) findViewById(R.id.settings);
+        mLogout = (ImageButton) findViewById(R.id.logout);
+        mRequest = (FloatingActionButton) findViewById(R.id.request);
+        mSettings = (ImageButton) findViewById(R.id.settings);
         mHistory = (Button) findViewById(R.id.history);
 
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +135,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 return;
             }
         });
+
+
 
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,12 +168,17 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                     pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
 
-                    mRequest.setText("Getting your Driver....");
+                    Snackbar.make(v, "Getting Your Driver...", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+                    //mRequest.setText("Getting your Driver....");
 
                     getClosestDriver();
                 }
             }
         });
+
+
         mSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,11 +231,13 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
+                View v;
                 if (!driverFound && requestBol){
                     DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(key);
                     mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+
                             if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
                                 Map<String, Object> driverMap = (Map<String, Object>) dataSnapshot.getValue();
                                 if (driverFound){
@@ -244,7 +260,13 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                     getDriverLocation();
                                     getDriverInfo();
                                     getHasRideEnded();
-                                    mRequest.setText("Looking for Driver Location....");
+                                  /*
+                                  BETA STUFF, IF SNACKBARS DONT WORK THEN REMOVE AND REPLACE THE BELOW LINE WITH SOMETHING ELSE, OR JUST CTRLZ YOUR WAY BACK TO STABILITY
+                                   */
+
+                                    View view = null;
+                                    Snackbar.make(view, "Getting Driver Location...", Snackbar.LENGTH_LONG)
+                                            .setAction("Action", null).show();
                                 }
                             }
                         }
@@ -286,7 +308,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     |  Purpose:  Get's most updated driver location and it's always checking for movements.
     |
     |  Note:
-    |	   Even tho we used geofire to push the location of the driver we can use a normal
+    |	   Even though we used geofire to push the location of the driver we can use a normal
     |      Listener to get it's location with no problem.
     |
     |      0 -> Latitude
@@ -324,11 +346,16 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     loc2.setLongitude(driverLatLng.longitude);
 
                     float distance = loc1.distanceTo(loc2);
+                    View view = null;
 
                     if (distance<100){
-                        mRequest.setText("Driver's Here");
+                        Snackbar.make(view, "Your Driver's Here", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        //mRequest.setText("Driver's Here");
                     }else{
-                        mRequest.setText("Driver Found: " + String.valueOf(distance));
+                        Snackbar.make(view, "Driver is about " + String.valueOf(distance) + " far", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                       // mRequest.setText("Driver Found: " + String.valueOf(distance));
                     }
 
 
@@ -438,7 +465,13 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         if (mDriverMarker != null){
             mDriverMarker.remove();
         }
-        mRequest.setText("call Uber");
+        View view = null;
+
+        // Find what "call uber" meant in this context and replace with suitable action.
+        Snackbar.make(view, "Call Uber", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
+       // mRequest.setText("call Uber");
 
         mDriverInfo.setVisibility(View.GONE);
         mDriverName.setText("");
@@ -503,7 +536,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     |  Purpose:  Get permissions for our app if they didn't previously exist.
     |
     |  Note:
-    |	requestCode: the nubmer assigned to the request that we've made. Each
+    |	requestCode: the number assigned to the request that we've made. Each
     |                request has it's own unique request code.
     |
     *-------------------------------------------------------------------*/
