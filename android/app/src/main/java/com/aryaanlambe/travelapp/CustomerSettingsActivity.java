@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +36,9 @@ public class CustomerSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField;
 
-    private Button mBack, mConfirm;
+    private Button mConfirm;
+
+    private ImageButton mBack;
 
     private ImageView mProfileImage;
 
@@ -60,7 +63,7 @@ public class CustomerSettingsActivity extends AppCompatActivity {
 
         mProfileImage = (ImageView) findViewById(R.id.profileImage);
 
-        mBack = (Button) findViewById(R.id.back);
+        mBack = (ImageButton) findViewById(R.id.back);
         mConfirm = (Button) findViewById(R.id.confirm);
 
         mAuth = FirebaseAuth.getInstance();
