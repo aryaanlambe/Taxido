@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aryaanlambe.travelapp">
+    package="com.aryaanlambe.taxido">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -19,16 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name="com.aryaanlambe.travelapp.onAppKilled" android:stopWithTask="false"/>
-        <activity android:name="com.aryaanlambe.travelapp.MainActivity">
+        <service android:name="com.aryaanlambe.taxido.onAppKilled" android:stopWithTask="false"/>
+        <activity android:name="com.aryaanlambe.taxido.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.aryaanlambe.travelapp.DriverLoginActivity" />
-        <activity android:name="com.aryaanlambe.travelapp.CustomerLoginActivity" />
+        <activity android:name="com.aryaanlambe.taxido.DriverLoginActivity" />
+        <activity android:name="com.aryaanlambe.taxido.CustomerLoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -42,13 +42,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.aryaanlambe.travelapp.DriverMapActivity"
+            android:name="com.aryaanlambe.taxido.DriverMapActivity"
             android:label="@string/title_activity_driver_map" />
-        <activity android:name="com.aryaanlambe.travelapp.CustomerMapActivity" />
-        <activity android:name="com.aryaanlambe.travelapp.CustomerSettingsActivity" />
-        <activity android:name="com.aryaanlambe.travelapp.DriverSettingsActivity" />
-        <activity android:name="com.aryaanlambe.travelapp.HistoryActivity" />
-        <activity android:name="com.aryaanlambe.travelapp.HistorySingleActivity"></activity>
+        <activity android:name="com.aryaanlambe.taxido.CustomerMapActivity" />
+        <activity android:name="com.aryaanlambe.taxido.CustomerSettingsActivity" />
+        <activity android:name="com.aryaanlambe.taxido.DriverSettingsActivity" />
+        <activity android:name="com.aryaanlambe.taxido.HistoryActivity" />
+        <activity android:name="com.aryaanlambe.taxido.HistorySingleActivity"></activity>
     </application>
 
 </manifest>

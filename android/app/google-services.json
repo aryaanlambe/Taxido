@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "952148399421",
-    "firebase_url": "https://travelapp-fe1e9.firebaseio.com",
-    "project_id": "travelapp-fe1e9",
-    "storage_bucket": "travelapp-fe1e9.appspot.com"
+    "project_number": "285448470095",
+    "firebase_url": "https://taxido-b2c1e.firebaseio.com",
+    "project_id": "taxido-b2c1e",
+    "storage_bucket": "taxido-b2c1e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:952148399421:android:b198d25d8dcfa8c686e154",
+        "mobilesdk_app_id": "1:285448470095:android:fe57257e231f363566b43a",
         "android_client_info": {
-          "package_name": "com.aryaanlambe.travelapp"
+          "package_name": "com.aryaanlambe.taxido"
         }
       },
       "oauth_client": [
         {
-          "client_id": "952148399421-ncthusjoahci1aevh0d7jomb326je43s.apps.googleusercontent.com",
+          "client_id": "285448470095-lgj00ku3tdddiaadom4ubmukgpm2k3vk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.aryaanlambe.travelapp",
-            "certificate_hash": "faec0dbc51058002262447a6bf607e59e3bea9ba"
+            "package_name": "com.aryaanlambe.taxido",
+            "certificate_hash": "fea5a5b1d1eacb5870581674e008d1ffd0245873"
           }
         },
         {
-          "client_id": "952148399421-rkgrp926qoniiavop1jl9crj92p8n44l.apps.googleusercontent.com",
+          "client_id": "285448470095-kqfvtn3st870udf1f40fic5sqgm2890l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCg1RO0586ux4bPnOQIrNQPt0PIGWLXp-0"
+          "current_key": "AIzaSyA12mPI7DwKR9JmoOCU5MKKVBmHGHxkcJI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "952148399421-rkgrp926qoniiavop1jl9crj92p8n44l.apps.googleusercontent.com",
+              "client_id": "285448470095-kqfvtn3st870udf1f40fic5sqgm2890l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
