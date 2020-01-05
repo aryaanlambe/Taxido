@@ -59,7 +59,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(CustomerLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerLoginActivity.this, "Failed to Sign Up. Make sure you\'re connected to the Internet & Try Again.", Toast.LENGTH_SHORT).show();
                         }else{
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
@@ -79,7 +79,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerLoginActivity.this, "Failed to Sign In. Make sure your e-mail & Password are correct.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -94,6 +94,18 @@ public class CustomerLoginActivity extends AppCompatActivity {
         super.onStart();
         mAuth.addAuthStateListener(firebaseAuthListener);
     }
+
+        //BETA STUFF STARTS HERE
+    public void onBackPressed(){
+
+        Intent intent = new Intent(CustomerLoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+
+    }
+        // BETA STUFF ENDS HERE
+
     @Override
     protected void onStop() {
         super.onStop();

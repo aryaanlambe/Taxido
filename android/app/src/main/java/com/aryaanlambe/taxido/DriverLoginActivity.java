@@ -58,7 +58,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverLoginActivity.this, "Failed to Sign Up. Make sure you\'re connected to the Internet & Try Again.", Toast.LENGTH_SHORT).show();
                         }else{
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id).child("name");
@@ -78,7 +78,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverLoginActivity.this, "Failed to Sign In. Make sure your e-mail & Password are correct.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -93,6 +93,21 @@ public class DriverLoginActivity extends AppCompatActivity {
         super.onStart();
         mAuth.addAuthStateListener(firebaseAuthListener);
     }
+
+    // BETA STUFF STARTS HERE
+    public void onBackPressed(){
+
+        Intent intent = new Intent(DriverLoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+
+    }
+
+        // BETA STUFF ENDS HERE
+
+
+
     @Override
     protected void onStop() {
         super.onStop();
