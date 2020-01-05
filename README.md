@@ -1,7 +1,7 @@
 # Taxido
 :taxi: :bus: :minibus:
 
-A Proof-of-concept "Uber-like" android app with live location updates. {Working on Rebranding TravelApp to Taxido}
+A Proof-of-concept "Uber-like" android app with live location updates.
 # :beetle: Bugs List:
 * Authentication works both ways and is not validated i.e. A Drivers email & password will also work for Customer.
 * Paypal Payouts dont work & so have been commented out in code.
@@ -12,7 +12,7 @@ A Proof-of-concept "Uber-like" android app with live location updates. {Working 
 Made using Android Studio, Firebase, Google Maps API,Google Places APi & PayPal API
 
 
-Old APK can be found under: android/app/build/outputs/apk/debug
+APK can be found under: android/app/build/outputs/apk/debug
 Feel free to clone, improve and open issues on :octocat: GitHub if you find any bugs other than the ones mentioned above.
 
 I'll maintain this app if demand increases.
