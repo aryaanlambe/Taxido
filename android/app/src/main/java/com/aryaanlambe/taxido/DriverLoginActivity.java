@@ -54,6 +54,8 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+
+
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
