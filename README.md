@@ -1,4 +1,4 @@
-# Taxido :taxi: :bus: :minibus:
+# :taxi: :bus: :minibus:
 
 A Proof-of-concept "Uber-like" android app with live location updates.
 # :beetle: Bugs List:
