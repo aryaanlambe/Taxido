@@ -1,6 +1,6 @@
-# :taxi: :bus: :minibus:
+# :bus: :taxi: :minibus:
 
-Get around with a Taxi, Bus or Combi of your liking! Includes Live Location updates.
+Get around with a Bus, Taxi or Combi of your liking! Includes Live Location updates.
 # :beetle: Bugs List:
 * Authentication works both ways and is not validated i.e. A Drivers email & password will also work for Customer.
 * Paypal Payouts dont work & so have been commented out in code.
